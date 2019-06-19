@@ -7,4 +7,10 @@ snake
 
 ## Finished
 
-None :(
+None(Screams internally)
+
+## Bad News
+
+Sadly, I wont be able to code for a while :(
+
+Much Sad very Bad
