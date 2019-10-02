@@ -32,7 +32,12 @@ function draw() {
     snakeDirY = 20;
     //s
   }
-
+  
+  snakeHistory.unshift([snakeHistory[0][0] + snakeDirX, snakeHistory[0][1] + snakeDirY]);
+  while (snakeHistory.length > snakeLength) {
+    snakeHistory.splice(snakeHistory.length - 1, 1);
+  }
+  
   background(220, 220, 220);
   //makes background a gray color
   fill("black");
