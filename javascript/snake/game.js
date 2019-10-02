@@ -5,7 +5,6 @@ function snake(length, history) {
   this.directionX = blocksize * 1;
   this.directionY = 0;
   //creates a basis for the snake including x,y, snake history, and length
-  }
 }
 
 function setup() {
