@@ -8,10 +8,10 @@ function snake(length, history) {
 
 function setup() {
   createCanvas(1280, 720);
+  
   frameRate(10);
   stroke(255, 255, 255);
-  var blocksize = 20;
-  s = new snake(3, [[blocksize * 5, blocksize * 5], [blocksize * 6, blocksize * 5], [blocksize * 7, blocksize * 5]]);
+  s = new snake(3, [640, 360], [660, 360], [680, 360]]);
 }
 
 function draw() {
