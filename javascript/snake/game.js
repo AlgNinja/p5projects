@@ -1,7 +1,7 @@
 function snake(length, history) {
   this.bodyLength = length;
   this.bodyHistory = history;
-  this.directionX = blocksize * 1;
+  this.directionX = 20;
   this.directionY = 0;
   //creates a basis for the snake including x,y, snake history, and length
 }
@@ -15,24 +15,24 @@ function setup() {
 }
 
 function draw() {
-  if (keyIsDown(87) && s.directionY != blocksize) {
+  if (keyIsDown(87) && s.directionY != 20) {
     s.directionX = 0;
-    s.directionY = blocksize * -1;
+    s.directionY = -20;
     //w
   }
-  if (keyIsDown(65) && s.directionX != blocksize) {
-    s.directionX = blocksize * -1;
+  if (keyIsDown(65) && s.directionX != 20) {
+    s.directionX = -20;
     s.directionY = 0;
     //a
   }
-  if (keyIsDown(68) && s.directionX != blocksize * -1) {
-    s.directionX = blocksize;
+  if (keyIsDown(68) && s.directionX != -20) {
+    s.directionX = 20;
     s.directionY = 0;
     //d
   }
-  if (keyIsDown(83) && s.directionY != blocksize * -1) {
+  if (keyIsDown(83) && s.directionY != -20) {
     s.directionX = 0;
-    s.directionY = blocksize;
+    s.directionY = 20;
     //s
   }
 
@@ -40,6 +40,6 @@ function draw() {
   //makes background a gray color
   fill("black");
   for (i = 0; i < s.bodyHistory.length; i++) {
-    rect(s.bodyHistory[i][0], s.bodyHistory[i][1], blocksize, blocksize);
+    rect(s.bodyHistory[i][0], s.bodyHistory[i][1], 20, 20);
   }
 }
