@@ -2,8 +2,8 @@
 function snake(length, history) {
   this.length = length;
   this.history = history;
-  this.directionX = 0;
-  this.directionY = blocksize * -1;
+  this.directionX = blocksize * 1;
+  this.directionY = 0;
   //creates a basis for the snake including x,y, snake history, and length
   this.move() = function() {
     if (keyIsDown(87) && this.directionY != blocksize) {
@@ -41,4 +41,7 @@ function draw() {
 
   background(220, 220, 220);
   //makes background a gray color
+  for (i = 0; i < s.history.length; i++) {
+    rect(s.history[i][0], s.history[i][1], blocksize, blocksize);
+  }
 }
