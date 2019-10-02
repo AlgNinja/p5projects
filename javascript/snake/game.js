@@ -10,7 +10,7 @@ function snake(length, history) {
 
 function setup() {
   createCanvas(1280, 720);
-  frameRate(30);
+  frameRate(10);
   var blocksize = 20;
   s = new snake(3, [[blocksize * 5, blocksize * 5], [blocksize * 6, blocksize * 5], [blocksize * 7, blocksize * 5]]);
 }
@@ -39,6 +39,7 @@ function draw() {
 
   background(220, 220, 220);
   //makes background a gray color
+  fill("black");
   for (i = 0; i < s.history.length; i++) {
     rect(s.history[i][0], s.history[i][1], blocksize, blocksize);
   }
