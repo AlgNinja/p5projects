@@ -39,7 +39,7 @@ function draw() {
   background(220, 220, 220);
   //makes background a gray color
   fill("black");
-  for (i = 0; i < s.history.length; i++) {
+  for (i = 0; i < s.bodyHistory.length; i++) {
     rect(s.history[i][0], s.history[i][1], blocksize, blocksize);
   }
 }
