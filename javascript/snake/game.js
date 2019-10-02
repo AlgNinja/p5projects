@@ -11,7 +11,7 @@ function setup() {
   
   frameRate(10);
   stroke(255, 255, 255);
-  s = new snake(3, [640, 360], [660, 360], [680, 360]]);
+  s = new snake(3, [[640, 360], [660, 360], [680, 360]]);
 }
 
 function draw() {
