@@ -40,6 +40,6 @@ function draw() {
   //makes background a gray color
   fill("black");
   for (i = 0; i < s.bodyHistory.length; i++) {
-    rect(s.history[i][0], s.history[i][1], blocksize, blocksize);
+    rect(s.bodyHistory[i][0], s.bodyHistory[i][1], blocksize, blocksize);
   }
 }
