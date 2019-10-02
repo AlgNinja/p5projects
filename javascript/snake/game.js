@@ -1,45 +1,47 @@
-function snake(length, history) {
-  this.bodyLength = length;
-  this.bodyHistory = history;
-  this.directionX = blocksize * 1;
-  this.directionY = 0;
-  //creates a basis for the snake including x,y, snake history, and length
-}
+var snakeLength = 3;
+var snakeHistory = [[640, 360], [660, 360], [680, 360]];
+var snakeDirX = 20;
+var snakeDirY = 0;
+//creates a basis for the snake including x,y, snake history, and length
 
 function setup() {
   createCanvas(1280, 720);
+  background(220, 220, 220);
   frameRate(10);
   stroke(255, 255, 255);
-  var blocksize = 20;
-  s = new snake(3, [[blocksize * 5, blocksize * 5], [blocksize * 6, blocksize * 5], [blocksize * 7, blocksize * 5]]);
 }
 
 function draw() {
-  if (keyIsDown(87) && s.directionY != blocksize) {
-    s.directionX = 0;
-    s.directionY = blocksize * -1;
+  if (keyIsDown(87) && snakeDirY != 20) {
+    snakeDirX = 0;
+    snakeDirY = -20;
     //w
   }
-  if (keyIsDown(65) && s.directionX != blocksize) {
-    s.directionX = blocksize * -1;
-    s.directionY = 0;
+  if (keyIsDown(65) && snakeDirX != 20) {
+    snakeDirX = -20;
+    snakeDirY = 0;
     //a
   }
-  if (keyIsDown(68) && s.directionX != blocksize * -1) {
-    s.directionX = blocksize;
-    s.directionY = 0;
+  if (keyIsDown(68) && snakeDirX != -20) {
+    snakeDirX = 20;
+    snakeDirY = 0;
     //d
   }
-  if (keyIsDown(83) && s.directionY != blocksize * -1) {
-    s.directionX = 0;
-    s.directionY = blocksize;
+  if (keyIsDown(83) && snakeDirY != -20) {
+    snakeDirX = 0;
+    snakeDirY = 20;
     //s
   }
-
+  
+  snakeHistory.unshift([snakeHistory[0][0] + snakeDirX, snakeHistory[0][1] + snakeDirY]);
+  while (snakeHistory.length > snakeLength) {
+    snakeHistory.splice(snakeHistory.length - 1, 1);
+  }
+  
   background(220, 220, 220);
   //makes background a gray color
   fill("black");
-  for (i = 0; i < s.history.length; i++) {
-    rect(s.history[i][0], s.history[i][1], blocksize, blocksize);
+  for (i = 0; i < snakeHistory.length; i++) {
+    rect(snakeHistory[i][0], snakeHistory[i][1], 20, 20);
   }
 }
