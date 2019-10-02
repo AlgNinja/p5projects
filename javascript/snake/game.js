@@ -9,7 +9,6 @@ function setup() {
   background(220, 220, 220);
   frameRate(10);
   stroke(255, 255, 255);
-  s = new snake(snakeLength, snakeHistory);
 }
 
 function draw() {
