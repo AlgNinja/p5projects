@@ -6,7 +6,7 @@ noStroke();
 rslider = createSlider(0,255, 100);
 rslider.position(20, 20);
 gslider = createSlider(0,255, 100);
-gslider.postion(20, 50);
+gslider.position(20, 50);
 bslider = createSlider(0,255, 100);
 bslider.position(20, 80);
   
