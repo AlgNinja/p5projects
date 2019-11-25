@@ -11,5 +11,7 @@ function draw() {
   gslider.postion(20, 50);
   var bslider = createSlider(0,255, 100);
   bslider.position(20, 80);
+  
+  var r = rslider.value();
 }
 
