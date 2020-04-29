@@ -14,9 +14,9 @@ function draw() {
     b: random(100, 255),
     a: random(50, 100)
   }
+  filter(BLUR, 2)
   noStroke();
-  fill(color.r, color.g, color.b, color.a)
-
-  ellipse(pos.x, pos.y, 25, 25)
+  fill(color.r, color.g, color.b, color.a);
+  ellipse(pos.x, pos.y, 25, 25);
 
 }
