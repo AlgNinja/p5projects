@@ -12,7 +12,7 @@ function draw() {
     r: random(0, 255),
     g: random(0, 50),
     b: random(0, 255),
-    a: 100
+    a: random(0, 100)
   }
   noStroke();
   fill(color.r, color.g, color.b, color.a);
