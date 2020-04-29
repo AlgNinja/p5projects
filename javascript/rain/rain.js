@@ -12,7 +12,7 @@ function draw() {
     r: 0,
     g: random(0, 55),
     b: random(100, 255),
-    a: random(50, 100)
+    a: random(100, 200)
   }
   filter(BLUR, 1)
   noStroke();
