@@ -26,7 +26,7 @@ function setup() {
 
 function draw() {
   background(220);
-  for(let i = 0; i < 2; i++) {
+  for(let i = 0; i < bubble.length; i++) {
     bubble[i].move();
     bubble[i].show();
     if(bubble[i].x > windowWidth - 15 || bubble[i].x < 15) {
