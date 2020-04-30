@@ -29,6 +29,9 @@ function setup() {
     bubble[i] = new Bubble();
   }
 }
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 
 function draw() {
   background(220, 100);
