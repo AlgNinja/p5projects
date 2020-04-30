@@ -4,10 +4,12 @@ class Bubble {
   constructor() {
     this.x = random(0, windowWidth);
     this.y = random(0, windowHeight);
-    this.random = [-5, -6, -7, -8, -9, -10, 5, 6, 7, 8, 9, 10]
-    this.velocity = this.random[Math.floor(Math.random()*20)]
-    this.speedX = this.velocity;
-    this.speedY = this.velocity;
+    this.randomX = [-5, -6, -7, -8, -9, -10, 5, 6, 7, 8, 9, 10]
+    this.randomY = [-5, -6, -7, -8, -9, -10, 5, 6, 7, 8, 9, 10]
+    this.velocityX = this.randomX[Math.floor(Math.random()*20)]
+    this.velocityY = this.randomY[Math.floor(Math.random()*20)]
+    this.speedX = this.velocityX;
+    this.speedY = this.velocityY;
   }
   
   move() {
