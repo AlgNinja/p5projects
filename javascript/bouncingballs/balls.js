@@ -19,7 +19,7 @@ class Bubble {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  for(i = 0; i < 2; i++) {
+  for(i = 0; i < 15; i++) {
     bubble[i] = new Bubble();
   }
 }
