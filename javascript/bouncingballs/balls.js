@@ -35,11 +35,11 @@ function draw() {
   for(let i = 0; i < bubble.length; i++) {
     bubble[i].move();
     bubble[i].show();
-    if(bubble[i].x - 15 > windowWidth || bubble[i].x < 15) {
+    if(bubble[i].x + 15 > windowWidth || bubble[i].x < 15) {
       bubble[i].speedX *= -1;
 
     }
-    if(bubble[i].y - 15 > windowHeight || bubble[i].y < 15) {
+    if(bubble[i].y + 15 > windowHeight || bubble[i].y < 15) {
       bubble[i].speedY *= -1;
     }
   }
