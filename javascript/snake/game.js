@@ -1,65 +1,119 @@
-var snakeLength = 3;
-var snakeHistory = [[640, 360], [660, 360], [680, 360]];
-var snakeDirX = 20;
-var snakeDirY = 0;
-var foodX = 300;
-var foodY = 300;
-//creates a basis for the snake including x,y, snake history, and length
-
+class Snake {
+  constructor() {
+    this.len = 0;
+    this.body = [];
+    this.body[0] = createVector(floor(w/2), floor(h/2));
+    this.xdir = 0;
+    this.ydir = 0;
+    
+  }
+  update() {
+    let head = this.body[this.body.length-1].copy();
+    this.body.shift();
+    head.x += this.xdir;
+    head.y += this.ydir;
+    this.body.push(head);
+    
+    //this.body[0].x += this.xdir;
+    //this.body[0].y += this.ydir;
+    
+    
+  }
+  eat(pos) {
+    let x = this.body[this.body.length-1].x;
+    let y = this.body[this.body.length-1].y;
+   
+    
+    if(x == pos.x && y == pos.y) {
+      this.grow();
+      return true;
+    }
+    return false;
+    
+  }
+  grow() {
+    let head = this.body[this.body.length-1].copy();
+    this.len++
+    this.body.push(head);
+  }
+  endGame() {
+    let x = this.body[this.body.length-1].x;
+    let y = this.body[this.body.length-1].y;
+    if(x > w-1 || x < 0 || y > h-1 || y < 0) {
+      return true;
+    }
+    for(let i = 0; i < this.body.length-1; i++) {
+      let part = this.body[i]
+      if (part.x == x && part.y == y ) {
+          return true;
+      }
+    }
+    return false;
+  }
+  setDir(x, y) {
+    this.xdir = x;
+    this.ydir = y;
+    
+  }
+  show() {
+    for(let i = 0; i < this.body.length; i++) {
+     noStroke();
+     fill(0, 255, 10)
+     rect(this.body[i].x, this.body[i].y, 1, 1);
+    }
+    
+  }
+    
+}
+let snake;
+let rez = 15;
+let food;
+let w ;
+let h;
 function setup() {
-  createCanvas(1280, 720);
-  background(220, 220, 220);
-  frameRate(10);
-  stroke(255, 255, 255);
+  createCanvas(400, 400);
+  w = floor(width / rez);
+  h = floor(height / rez);
+  snake = new Snake();
+  frameRate(5);
+  food = createVector();
+  foodLocation();
+}
+function foodLocation() {
+  let x = floor(random(w));
+  let y = floor(random(h));
+  food = createVector(x, y);
+}
+function keyPressed() {
+  if(keyCode === LEFT_ARROW) {
+    snake.setDir(-1, 0);
+    
+  } else if (keyCode === RIGHT_ARROW) {
+    snake.setDir(1, 0);
+  } else if (keyCode === DOWN_ARROW) {
+    snake.setDir(0, 1);
+  } else if (keyCode === UP_ARROW) {
+    snake.setDir(0, -1);
+  }
+  
 }
 
 function draw() {
-  if (keyIsDown(87) && snakeDirY != 20) {
-    snakeDirX = 0;
-    snakeDirY = -20;
-    //w
+  scale(rez);
+  background(0);
+  if(snake.eat(food)) {
+    foodLocation();
   }
-  if (keyIsDown(65) && snakeDirX != 20) {
-    snakeDirX = -20;
-    snakeDirY = 0;
-    //a
-  }
-  if (keyIsDown(68) && snakeDirX != -20) {
-    snakeDirX = 20;
-    snakeDirY = 0;
-    //d
-  }
-  if (keyIsDown(83) && snakeDirY != -20) {
-    snakeDirX = 0;
-    snakeDirY = 20;
-    //s
+  snake.update();
+  snake.show();
+  
+  if(snake.endGame()) {
+    alert('You died!')
+    background(255, 0, 0)
+    noLoop();
+  
   }
   
-  snakeHistory.unshift([snakeHistory[0][0] + snakeDirX, snakeHistory[0][1] + snakeDirY]);
-  while (snakeHistory.length > snakeLength) {
-    snakeHistory.splice(snakeHistory.length - 1, 1);
-  }
-  
-  background(220, 220, 220);
-  //makes background a gray color
-  fill("black");
-  for (i = 0; i < snakeHistory.length; i++) {
-    for (j = 0; j < snakeHistory.length; j++) {
-      if ((snakeHistory[i][0] == snakeHistory[j][0] && snakeHistory[i][1] == snakeHistory[j][1] && i != j) || snakeHistory[0][0] < 0 || snakeHistory[0][0] >= 1280 || snakeHistory[0][1] < 0 || snakeHistory[0][1] >= 720) {
-        snakeHistory = [[640, 360], [620, 360], [600, 360]];
-        snakeLength = 3;
-        snakeDirX = 20;
-        snakeDirY = 0;
-      }
-    }
-    if (snakeHistory[i][0] == foodX && snakeHistory[i][1] == foodY) {
-      snakeLength += 3;
-      score += 1;
-      foodX = round(random(63)) * 20;
-      foodY = round(random(31)) * 20;
-    }
-    rect(snakeHistory[i][0], snakeHistory[i][1], 20, 20);
-  }
-  fill("red");
-  rect(foodX, foodY, 20, 20);
+  fill(255, 0, 0);
+  rect(food.x, food.y, 1, 1)
 }
