@@ -75,8 +75,7 @@ function setup() {
   w = floor(width / rez);
   h = floor(height / rez);
   snake = new Snake();
-  frameRate(5);
-  food = createVector();
+  frameRate(10);
   foodLocation();
 }
 function foodLocation() {
