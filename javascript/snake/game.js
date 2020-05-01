@@ -59,7 +59,7 @@ class Snake {
     for(let i = 0; i < this.body.length; i++) {
      noStroke();
      fill(0, 255, 10)
-     rect(this.body[i].x, this.body[i].y, 1, 1);
+     rect(this.body[i].x, this.body[i].y, 1, 1 , 0.3);
     }
     
   }
@@ -71,7 +71,7 @@ let food;
 let w ;
 let h;
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1280, 720);
   w = floor(width / rez);
   h = floor(height / rez);
   snake = new Snake();
@@ -114,5 +114,5 @@ function draw() {
   }
   
   fill(255, 0, 0);
-  rect(food.x, food.y, 1, 1)
+  rect(food.x, food.y, 1, 1, 1)
 }
